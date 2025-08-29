@@ -1,4 +1,4 @@
-# 모듈 정보 및 사용 방법
+### 모듈 정보 및 사용 방법
 
 translate_batch_with_libre_translate(texts: List[str]) -> List[str]
 - LibreTranslate 서버를 이용해 여러 한글 텍스트를 영어로 배치 번역  
@@ -14,7 +14,8 @@ main()
 
 
 
-번역에 사용하는 API 정보
+
+### 번역에 사용하는 API 정보
 https://github.com/LibreTranslate/LibreTranslate?utm_source=chatgpt.com
 
 사용 방법

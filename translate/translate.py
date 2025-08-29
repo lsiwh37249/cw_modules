@@ -5,61 +5,6 @@ import time
 import requests
 from typing import Dict, Any, List
 
-def translate_batch_with_google_free(texts: List[str]) -> List[str]:
-    """여러 한글 텍스트를 한 번에 영어로 번역"""
-    try:
-        # 모든 텍스트를 하나의 문자열로 결합 (구분자: \n)
-        combined_text = '\n'.join(texts)
-        
-        # 구글 번역 API 호출
-        url = "https://translate.googleapis.com/translate_a/single"
-        
-        # 파라미터 설정
-        params = {
-            'client': 'gtx',
-            'sl': 'ko',  # 한국어
-            'tl': 'en',  # 영어
-            'dt': 't',
-            'q': combined_text
-        }
-        
-        # API 호출
-        response = requests.get(url, params=params)
-        if response.status_code == 200:
-            result = response.json()
-            
-            # 번역 결과를 개별 텍스트로 분리
-            translated_texts = []
-            current_text = ""
-            
-            for sentence in result[0]:
-                if sentence[0]:  # 번역된 텍스트가 있는 경우
-                    current_text += sentence[0]
-                    if sentence[0].endswith('\n') or sentence[0].endswith('.'):
-                        translated_texts.append(current_text.strip())
-                        current_text = ""
-            
-            # 마지막 텍스트 처리
-            if current_text:
-                translated_texts.append(current_text.strip())
-            
-            # 원본 텍스트 개수와 번역 결과 개수가 다를 경우 처리
-            if len(translated_texts) != len(texts):
-                print(f"⚠️ 번역 결과 개수 불일치: 원본 {len(texts)}개, 번역 {len(translated_texts)}개")
-                # 부족한 경우 원본으로 채움
-                while len(translated_texts) < len(texts):
-                    translated_texts.append(texts[len(translated_texts)])
-            
-            time.sleep(1)  # 요청 간격
-            return translated_texts[:len(texts)]  # 원본 개수만큼 반환
-        else:
-            print(f"번역 실패: {response.status_code}")
-            return texts
-            
-    except Exception as e:
-        print(f"배치 번역 오류: {e}")
-        return texts
-
 def translate_batch_with_libre_translate(texts: List[str]) -> List[str]:
     """LibreTranslate로 배치 번역"""
     try:
@@ -112,12 +57,6 @@ def translate_object_names_batch(data: Dict[str, Any]) -> Dict[str, Any]:
         print(f"📝 총 {len(korean_texts)}개 텍스트 배치 번역 시작...")
         print(f"번역할 텍스트: {', '.join(korean_texts)}")
         
-        # 배치 번역 시도
-        #english_texts = translate_batch_with_google_free(korean_texts)
-        
-        # 첫 번째 방법 실패 시 두 번째 방법 시도
-        #if english_texts == korean_texts:
-        #    print("Google 번역 실패, LibreTranslate 시도...")
         english_texts = translate_batch_with_libre_translate(korean_texts)
         
         # 번역 결과를 각 객체에 적용

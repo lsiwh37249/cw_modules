@@ -1,9 +1,5 @@
 # 모듈 정보 및 사용 방법
 
-## `translate_batch_with_google_free(texts: List[str]) -> List[str]`
-- 여러 한글 텍스트를 한 번에 영어로 번역  
-- Google 번역 비공식 API를 사용하며, 결과를 개별 텍스트로 나눔
-
 ## `translate_batch_with_libre_translate(texts: List[str]) -> List[str]`
 - LibreTranslate 서버를 이용해 여러 한글 텍스트를 영어로 배치 번역  
 - 번역 실패 시 원본 텍스트로 보완하고, 결과 개수를 원본과 맞춤

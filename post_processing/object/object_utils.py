@@ -87,17 +87,6 @@ def filter_chain_data(chain_data):
             else:
                 logger.debug("Extra Label: 없음")
             
-            # 추가: object_name이 "작업제외이미지"인 경우도 체크
-            if "작업제외이미지" in object_name:
-                is_excluded = True
-                logger.warning(f"object_name이 작업제외이미지로 판별됨 - ObjectID: {object_id}")
-                excluded_items.append({
-                    "objectID": object_id,
-                    "object_name": object_name,
-                    "reason": "object_name_작업제외이미지",
-                    "label": value.get("extra", {}).get("label", "없음")
-                })
-            
             # 작업제외이미지가 아닌 경우만 처리
             if not is_excluded:
                 # 2. 추가 작업 불가 객체 카운트

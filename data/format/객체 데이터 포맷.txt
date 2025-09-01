@@ -1,0 +1,35 @@
+{
+  "dataID": 123456789,
+  "dataset_name": "예시데이터셋",
+  "version": "v1.0",
+  "year": "2025",
+  "subject": ["drama"],
+  "video": [
+    {
+      "id": "video001",
+      "width": 1920,
+      "height": 1080,
+      "file_name": "raw_video_001.mp4"
+    }
+  ],
+  "clip": {
+    "id": "clip001",
+    "file_name": "clip_001.mp4",
+    "length": "00:00 ~ 01:05",
+    "width": 1920,
+    "height": 1080,
+    "format": "mp4",
+    "ratio": 1.78,
+    "fps": "30"
+  },
+  "object_annotation": [
+    {
+      "image_id": "frame_001.jpg",
+      "object_id": "123456789_01_1",
+      "image_frame": "00:01",
+      "object_name_kr": "카메라",
+      "object_name_en": "camera",
+      "bbox": [120.5, 88.1, 50.0, 65.5]
+    }
+  ]
+}

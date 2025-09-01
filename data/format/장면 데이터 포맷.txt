@@ -1,0 +1,38 @@
+{
+  "dataID": 123456789,
+  "dataset_name": "example_dataset",
+  "version": "v1.0",
+  "year": "2025",
+  "category": [
+    "drama",
+    "news"
+  ],
+  "subject": [
+    "drama"
+  ],
+  "video": [
+    {
+      "id": "video_001",
+      "width": 1920,
+      "height": 1080,
+      "file_name": "video_001.mp4"
+    }
+  ],
+  "clip": {
+    "id": "clip_001",
+    "file_name": "clip_001.mp4",
+    "length": "00:00 ~ 01:05",
+    "width": 1920,
+    "height": 1080,
+    "format": "mp4",
+    "ratio": 1.77,
+    "fps": "30"
+  },
+  "scene_annotation": [
+    {
+      "scene_id": "scene_dataId_1",
+      "description_scene_kr": "국문 장면 설명문",
+      "description_scene_en": "English scene description"
+    }
+  ]
+}

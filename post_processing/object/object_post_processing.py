@@ -92,8 +92,10 @@ if __name__ == "__main__":
                 line = line.strip()
                 if not line:  # 빈 줄 건너뛰기
                     continue
-                    
-                logger.info(f"{line_count}번째 라인 처리 시작 (라인 길이: {len(line)})")
+
+                logger.info(f"============================="*10)
+
+                logger.info(f"{line_count}번째 라인 처리 완료 (라인 길이: {len(line)})")
                 
                 try:
                     data = json.loads(line)

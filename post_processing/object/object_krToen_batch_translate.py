@@ -11,7 +11,10 @@ def translate_batch_with_google_free(texts: List[str]) -> List[str]:
         # 모든 텍스트를 하나의 문자열로 결합 (구분자: \n)
         combined_text = '\n'.join(texts)
         
+        # 구글 번역 API 호출
         url = "https://translate.googleapis.com/translate_a/single"
+        
+        # 파라미터 설정
         params = {
             'client': 'gtx',
             'sl': 'ko',  # 한국어
@@ -20,9 +23,11 @@ def translate_batch_with_google_free(texts: List[str]) -> List[str]:
             'q': combined_text
         }
         
+        # API 호출
         response = requests.get(url, params=params)
         if response.status_code == 200:
             result = response.json()
+            
             # 번역 결과를 개별 텍스트로 분리
             translated_texts = []
             current_text = ""
